@@ -11,8 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/top','TopController@top');
+Route::get('/','TopController@top');
