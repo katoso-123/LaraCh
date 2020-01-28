@@ -21,6 +21,6 @@ Route::get('/new','ThreadController@new' );
 Route::get('/read','ThreadController@read' );
 
 //search
-Route::post('/search/word','SearchController@word' );
-Route::post('/search/category','SearchController@category' );
+Route::get('/search/word','SearchController@word' );
+Route::get('/search/category','SearchController@category' );
 Route::post('/search/{}/pager','SearchController@peger' );
