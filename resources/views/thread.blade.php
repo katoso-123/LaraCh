@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'スレッドタイトル')
+@section('title', 'スレ')
 @section('content')
   <table>
     <tr><td>{{ 'スレッドタイトル' }}</td><td>{{ '作成日時' }}</td><td><a href="{{ url('/search/category') }}">{{ 'カテゴリ' }}</a></td></tr>

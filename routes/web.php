@@ -23,4 +23,4 @@ Route::get('/read','ThreadController@read' );
 //search
 Route::get('/search/word','SearchController@word' );
 Route::get('/search/category','SearchController@category' );
-Route::post('/search/{}/pager','SearchController@peger' );
+Route::get('/search/{}/pager','SearchController@peger' );
