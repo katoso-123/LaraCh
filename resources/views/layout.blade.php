@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <a href="{{ url('/top') }}">LaraCh</a>
+    <a href="{{ url('/') }}">LaraCh</a>
   </header>
   <div class = "wrap">
     @yield('content')

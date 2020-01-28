@@ -11,8 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//top
+Route::get('/','TopController@top');
 
-Route::get('/top','TopController@top');
+//thread
+Route::get('/create','ThreadController@create' );
+Route::get('/res','ThreadController@res' );
+Route::get('/new','ThreadController@new' );
+Route::get('/read','ThreadController@read' );
+
+//search
+Route::post('/search/word','SearchController@word' );
+Route::post('/search/category','SearchController@category' );
+Route::post('/search/{}/pager','SearchController@peger' );
