@@ -19,6 +19,6 @@
     </p>
   </form>
   <h1>新規スレッド作成</h1>
-  <a href="{{ url('/new') }}">新規スレッド作成</a>
+  <a href="{{ url('/create') }}">新規スレッド作成</a>
 
 @endsection

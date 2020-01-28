@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', {{ ? }})
+@section('title', 'スレ')
 @section('content')
 
 @endsection
