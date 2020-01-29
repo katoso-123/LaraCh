@@ -4,9 +4,9 @@
 @section('content')
 
   <h1>スレッド検索</h1>
-  <form action="{{ url('/search/word') }}">
+  <form action="{{ action('SearchController@word') }}">
     <p>ワードで検索！</p>
-    <p><input type="text" placeholder="検索ワードを入力してください"><input type="submit"></p>
+    <p><input type="text" placeholder="検索ワードを入力してください" name="word"><input type="submit"></p>
   </form>
   <form action="{{ url('/search/category') }}">
     <p>カテゴリで検索！</p>
