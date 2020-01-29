@@ -15,7 +15,7 @@ class SearchController extends Controller
         $query = Thread::query();
         $query->where('title','like','%'.$request->word.'%');
         $data = $query->orderBy('created_at','desc')->paginate(10);
-        
+
         return view('search')->with([
             'word' => $request->word,
             'data' => $data,

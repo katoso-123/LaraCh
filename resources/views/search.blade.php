@@ -17,15 +17,10 @@
     </tr>
   </table>
 @endforeach
+{{ $data->appends('word', $word)->links() }}
 @else
 <h1>カテゴリ「{{$category}}」の結果</h1>
 <p>〇件</p>
 @endif
-
-<ul>
-  <li>1</li>
-  <li>2</li>
-  <li>3</li>
-</ul>
 
 @endsection
