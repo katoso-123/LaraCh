@@ -26,7 +26,7 @@ class ThreadController extends Controller
         
         //データベースに値をinsert
         $thread = Thread::create([
-            'threads_id' => $uniqid,
+            'threads_id' => uniqid(),
             'title' => $request -> title,
             'cates_name' => $request -> cate,
         ]);
