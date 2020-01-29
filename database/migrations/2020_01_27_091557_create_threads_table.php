@@ -15,11 +15,11 @@ class CreateThreadsTable extends Migration
     {
         Schema::create('threads', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('threads_id');
+            $table->string('threads_id');
             $table->string('title');
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('cates_id');
+            $table->string('cates_id');
         });
     }
 

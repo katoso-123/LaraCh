@@ -7,12 +7,13 @@
 <form action="{{ url('/new') }}" method="post"> 
 @csrf
   <p>スレタイを入力してください</p>
-  <p><input type="text"></p>
+  <p><input type="text" name="title"></p>
   <p>カテゴリを選択してください</p>
-  <select>
+  <select name="cate">
     <option value="" hidden>カテゴリを選択してください</option>
-    <!-- foreachでoptionを回す -->
-    <option value="カテゴリid">カテゴリ名</option>
+    @foreach($cates as $cate)
+    <option value="{{ $cate -> cates_id }}">{{ $cate -> cates_name }}</option>
+    @endforeach
   </select>
   <p><input type="submit" value="作成する"></p>
 </form>

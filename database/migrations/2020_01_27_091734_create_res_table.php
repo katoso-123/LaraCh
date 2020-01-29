@@ -15,8 +15,8 @@ class CreateResTable extends Migration
     {
         Schema::create('res', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('res_id');
-            $table->integer('threads_id');
+            $table->string('res_id');
+            $table->string('threads_id');
             $table->string('body');
             $table->timestamp('create_at');
         });

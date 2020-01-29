@@ -12,13 +12,5 @@ class ResTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('res')->insert([
-
-                'res_id'           => 1,
-                'threads_id'      => 1,
-                'body'           =>'hello',
-                'create_at'      =>new DateTime(),
-        ]);
-
     }
 }
