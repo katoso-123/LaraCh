@@ -12,7 +12,7 @@
   <select name="cate">
     <option value="" hidden>カテゴリを選択してください</option>
     @foreach($cates as $cate)
-    <option value="{{ $cate -> cates_id }}">{{ $cate -> cates_name }}</option>
+    <option value="{{ $cate -> cates_name }}">{{ $cate -> cates_name }}</option>
     @endforeach
   </select>
   <p><input type="submit" value="作成する"></p>

@@ -19,7 +19,7 @@ class CreateThreadsTable extends Migration
             $table->string('title');
             $table->timestamps();
             $table->softDeletes();
-            $table->string('cates_id');
+            $table->string('cates_name');
         });
     }
 

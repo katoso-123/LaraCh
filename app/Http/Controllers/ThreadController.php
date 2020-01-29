@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Cate;
 use App\Thread;
+use Carbon\Carbon;
 
 class ThreadController extends Controller
 {
@@ -20,18 +21,16 @@ class ThreadController extends Controller
     }
 
     //new_thread_create画面⇒作成ボタン
-    public function new(){
+    public function new(Request $request){
         //Threadのmodelクラスのインスタンスを作成
         $thread = new Thread();
 
         //データベースに値をinsert
         $thread->create([
             'threads_id' => uniqid(),
-            'title' => GET_['title'],
-            'created_at' => new DateTime(),
-            'cates_id' => GET_['cate'],
+            'title' => $request -> title,
+            'cates_name' => $request -> cate,
         ]);
-
 
         return view('thread');
     }
@@ -40,6 +39,5 @@ class ThreadController extends Controller
     public function read(){
         return view('thread');
     }
-
 
 }
