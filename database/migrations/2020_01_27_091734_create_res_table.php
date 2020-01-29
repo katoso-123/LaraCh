@@ -18,7 +18,7 @@ class CreateResTable extends Migration
             $table->string('res_id');
             $table->string('threads_id');
             $table->string('body');
-            $table->timestamp('create_at');
+            $table->timestamps();
         });
     }
 

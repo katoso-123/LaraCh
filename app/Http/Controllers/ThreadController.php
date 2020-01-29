@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Cate;
 use App\Thread;
-use Carbon\Carbon;
+use App\Res;
 
 class ThreadController extends Controller
 {
@@ -16,28 +16,35 @@ class ThreadController extends Controller
         return view('new_thread_create', ['cates'=>$cates]);
     }
 
-    //thread画面⇒投稿ボタン
-    public function res(){
-        return view('thread');
-    }
-
     //new_thread_create画面⇒作成ボタン
     public function new(Request $request){
         
         //データベースに値をinsert
         $thread = Thread::create([
-            'threads_id' => $uniqid,
+            'threads_id' => uniqid(),
             'title' => $request -> title,
             'cates_name' => $request -> cate,
         ]);
 
         return view('thread')->with([
-            'title' => $thread->title,
-            'created_at' =>  $thread->created_at,
-            'cates_name' => $thread->cates_name,
+            'thread' => $thread,
             ]);
     }
 
+    //thread画面⇒投稿ボタン
+    public function res(Request $request){
+
+        //データベースに値をinsert
+        $res = Res::create([
+            'res_id' => uniqid(),
+            'threads_id' => $request -> thread_id,
+            'body' => $request -> body,
+            
+        ]);
+        
+        return view('thread');
+    }
+    
     //search画面⇒続きを読むボタン
     public function read(){
         return view('thread');
