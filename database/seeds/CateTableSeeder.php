@@ -43,6 +43,10 @@ class CateTableSeeder extends Seeder
                 'cates_id'           => uniqid(),
                 'cates_name'      => '恋愛',
             ],
+            [
+                'cates_id'           => uniqid(),
+                'cates_name'      => '漫画',
+            ],
         ]);
     }
 }
