@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\WordRequest;
 use App\Thread;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class SearchController extends Controller
 {
@@ -15,7 +17,7 @@ class SearchController extends Controller
         $query = Thread::query();
         $query->where('title','like','%'.$request->word.'%');
         $data = $query->orderBy('created_at','desc')->paginate(10);
-        
+
         return view('search')->with([
             'word' => $request->word,
             'data' => $data,

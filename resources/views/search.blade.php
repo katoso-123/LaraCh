@@ -17,6 +17,7 @@
     </tr>
   </table>
 @endforeach
+{{ $data->appends('word', $word)->links() }}
 @else
 <h1>カテゴリ「{{$category}}」の結果</h1>
 <p>〇件</p>
