@@ -15,7 +15,7 @@ class CreateCatesTable extends Migration
     {
         Schema::create('cates', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('cates_id');
+            $table->string('cates_id');
             $table->string('cates_name');
         });
     }
