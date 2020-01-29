@@ -2,14 +2,12 @@
 
 @section('title', 'スレ')
 @section('content')
+  
   <table>
-    <tr><td>{{ 'スレッドタイトル' }}</td><td>{{ '作成日時' }}</td><td><a href="{{ url('/search/category') }}">{{ 'カテゴリ' }}</a></td></tr>
+    <tr><td><h1>{{ 'スレッドタイトル' }}</h1></td></tr>
+    <tr><td>{{ '作成日時' }}</td><td><a href="{{ url('/search/category') }}">{{ 'カテゴリ' }}</a></td></tr>
   </table>
   <!-- foreachでresDBを回す -->
-  <table>
-    <tr><td>{{ 'No' }}</td><td>{{ '投稿日時' }}</td><td>{{ '投稿者ID' }}</td></tr>
-    <tr><td>{{ 'テキスト' }}</td></tr>
-  </table>
   <table>
     <tr><td>{{ 'No' }}</td><td>{{ '投稿日時' }}</td><td>{{ '投稿者ID' }}</td></tr>
     <tr><td>{{ 'テキスト' }}</td></tr>
