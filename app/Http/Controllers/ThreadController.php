@@ -37,9 +37,8 @@ class ThreadController extends Controller
         //データベースに値をinsert
         $res = Res::create([
             'res_id' => uniqid(),
-            'threads_id' => $request -> thread_id,
+            'threads_id' => 'aaa',
             'body' => $request -> body,
-            
         ]);
         
         return view('thread');
