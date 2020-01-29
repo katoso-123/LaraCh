@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Cate;
 use App\Thread;
@@ -32,7 +33,11 @@ class ThreadController extends Controller
             'cates_name' => $request -> cate,
         ]);
 
-        return view('thread');
+        return view('thread')->with([
+            'title' => $request -> title,
+            'created_at' =>  DB::table('threads')->where('title', $request -> title)->pluck('created_at'),
+            'cates_name' => $request -> cate,
+            ]);
     }
 
     //search画面⇒続きを読むボタン

@@ -4,8 +4,8 @@
 @section('content')
   
   <table>
-    <tr><td><h1>{{ 'スレッドタイトル' }}</h1></td></tr>
-    <tr><td>{{ '作成日時' }}</td><td><a href="{{ url('/search/category') }}">{{ 'カテゴリ' }}</a></td></tr>
+    <tr><td><h1>{{ $title }}</h1></td></tr>
+    <tr><td>{{ $created_at }}</td><td><a href="{{ url('/search/category') }}">{{ $cates_name }}</a></td></tr>
   </table>
   <!-- foreachでresDBを回す -->
   <table>
