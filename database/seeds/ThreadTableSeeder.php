@@ -17,7 +17,7 @@ class ThreadTableSeeder extends Seeder
                 'threads_id'           => uniqid(),
                 'title'      => '【悲報】ネトウヨさん、新型肺炎に便乗して中国ヘイト＆怪しい情報を拡散してしまう',
                 'created_at'      => new DateTime(),
-                'cates_id'      => '5e310e63afbcf',
+                'cates_name'      => '一般',
             ],
         ]);
     }
