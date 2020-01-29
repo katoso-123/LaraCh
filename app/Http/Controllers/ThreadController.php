@@ -32,16 +32,20 @@ class ThreadController extends Controller
     }
 
     //thread画面⇒投稿ボタン
-    public function res(Request $request){
+    public function res(Request $request, Thread $thread){
+
+        // dd($thread->id);
 
         //データベースに値をinsert
         $res = Res::create([
             'res_id' => uniqid(),
-            'threads_id' => 'aaa',
+            'threads_id' => $thread -> threads_id,
             'body' => $request -> body,
         ]);
         
-        return view('thread');
+        return view('thread')->with([
+            'thread' => $thread,
+            ]);
     }
     
     //search画面⇒続きを読むボタン

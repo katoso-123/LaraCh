@@ -16,7 +16,7 @@ Route::get('/','TopController@top');
 
 //thread
 Route::get('/create','ThreadController@create' );
-Route::get('/res','ThreadController@res' );
+Route::get('/res/{thread}','ThreadController@res' );  
 Route::post('/new','ThreadController@new' );
 Route::get('/read','ThreadController@read' );
 
