@@ -23,20 +23,18 @@ class ThreadController extends Controller
 
     //new_thread_create画面⇒作成ボタン
     public function new(Request $request){
-        //Threadのmodelクラスのインスタンスを作成
-        $thread = new Thread();
-
+        
         //データベースに値をinsert
-        $thread->create([
-            'threads_id' => uniqid(),
+        $thread = Thread::create([
+            'threads_id' => $uniqid,
             'title' => $request -> title,
             'cates_name' => $request -> cate,
         ]);
 
         return view('thread')->with([
-            'title' => $request -> title,
-            'created_at' =>  DB::table('threads')->where('title', $request -> title)->pluck('created_at'),
-            'cates_name' => $request -> cate,
+            'title' => $thread->title,
+            'created_at' =>  $thread->created_at,
+            'cates_name' => $thread->cates_name,
             ]);
     }
 
