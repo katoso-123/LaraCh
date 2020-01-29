@@ -9,8 +9,10 @@
   </table>
   <!-- foreachでresDBを回す -->
   <table>
-    <tr><td>{{ 'No' }}</td><td>{{ '投稿日時' }}</td><td>{{ '投稿者ID' }}</td></tr>
-    <tr><td>{{ 'テキスト' }}</td></tr>
+  @foreach($ress as $res)
+    <tr><td>{{ 'No' }}</td><td>{{ $res->created_at }}</td><td>{{ '投稿者ID' }}</td></tr>
+    <tr><td>{{ $res->body }}</td></tr>
+  @endforeach
   </table>
   <form action="{{ action('ThreadController@res', $thread->id) }}">
     <p><input type="text" placeholder="レス内容を入力してください" name="body"><input type="submit"></p>

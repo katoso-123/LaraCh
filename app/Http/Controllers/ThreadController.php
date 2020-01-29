@@ -26,27 +26,30 @@ class ThreadController extends Controller
             'cates_name' => $request -> cate,
         ]);
 
+        $ress = [];
+
         return view('thread')->with([
             'thread' => $thread,
+            'ress' => $ress,
             ]);
     }
 
     //thread画面⇒投稿ボタン
     public function res(Request $request, Thread $thread){
 
-        // dd($thread->id);
-
         //データベースに値をinsert
         $res = Res::create([
             'res_id' => uniqid(),
             'threads_id' => $thread -> threads_id,
             'body' => $request -> body,
-            
         ]);
         
+        $ress = Res::where('threads_id',$thread -> threads_id)->get(); 
+
         return view('thread')->with([
             'thread' => $thread,
-            ]);
+            'ress' => $ress,
+        ]);
     }
     
     //search画面⇒続きを読むボタン
