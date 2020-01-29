@@ -50,7 +50,12 @@ class ThreadController extends Controller
     }
     
     //search画面⇒続きを読むボタン
-    public function read(){
+    public function read($thread){
+        $reses = Res::where('threads_id', $thread);
+
+        foreach($reses as $res){
+            dd($res); 
+        }
         return view('thread');
     }
 

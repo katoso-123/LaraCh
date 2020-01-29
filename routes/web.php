@@ -18,7 +18,7 @@ Route::get('/','TopController@top');
 Route::get('/create','ThreadController@create' );
 Route::get('/res/{thread}','ThreadController@res' );  
 Route::post('/new','ThreadController@new' );
-Route::get('/read','ThreadController@read' );
+Route::get('/read/{thread}','ThreadController@read' );
 
 //search
 Route::get('/search/word','SearchController@word' );

@@ -5,7 +5,7 @@
   
   <table>
     <tr><td><h1>{{ $thread->title }}</h1></td></tr>
-    <tr><td>{{ $thread->created_at }}</td><td><a href="{{ url('/search/category') }}">{{ $thread->cates_name }}</a></td></tr>
+    <tr><td>作成日時：{{ $thread->created_at }}</td><td><a href="{{ url('/search/category') }}">{{ $thread->cates_name }}</a></td></tr>
   </table>
   <!-- foreachでresDBを回す -->
   <table>
