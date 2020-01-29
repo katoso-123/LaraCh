@@ -4,10 +4,10 @@
 @section('content')
 
 @if($result)
-<h1>「」の検索結果</h1>
+<h1>「{{$word}}」の検索結果</h1>
 <p>〇件</p>
 @else
-<h1>カテゴリ「」の結果</h1>
+<h1>カテゴリ「{{$category}}」の結果</h1>
 <p>〇件</p>
 @endif
 
