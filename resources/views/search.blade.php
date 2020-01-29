@@ -23,10 +23,4 @@
 <p>〇件</p>
 @endif
 
-<ul>
-  <li>1</li>
-  <li>2</li>
-  <li>3</li>
-</ul>
-
 @endsection
