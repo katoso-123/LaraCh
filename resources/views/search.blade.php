@@ -3,7 +3,7 @@
 @section('title', '検索結果')
 @section('content')
 
-@if(true)
+@if($result)
 <h1>「」の検索結果</h1>
 <p>〇件</p>
 @else
