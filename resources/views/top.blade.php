@@ -25,6 +25,6 @@
     </p>
   </form>
   <h2>新規スレッド作成</h2>
-  <a href="{{ url('/create') }}">新規スレッド作成</a>
+  <a href="{{ url('/create') }}" class="btn btn-success">新規スレッド作成</a>
 
 @endsection
