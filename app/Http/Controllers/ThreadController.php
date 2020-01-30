@@ -28,11 +28,21 @@ class ThreadController extends Controller
             'cates_name' => $request -> cate,
         ]);
 
-        $ress = [];
+        $res = Res::create([
+            'res_id' => uniqid(),
+            'threads_id' => $thread->threads_id,
+            'body' => $request->body,
+            'name' => "スレ主",
+        ]);
 
+        $ress = Res::where('threads_id',$thread -> threads_id)->get(); 
+
+        // $ress = [];
+        $number = 0;
         return view('thread')->with([
             'thread' => $thread,
             'ress' => $ress,
+            'number' => $number,
             ]);
     }
 

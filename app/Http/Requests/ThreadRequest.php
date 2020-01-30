@@ -27,6 +27,7 @@ class ThreadRequest extends FormRequest
             //バリデーションルール
             'title' => 'required|max:200',
             'cate' => 'required',
+            'body' => 'required|max:400',
         ];
     }
 
@@ -37,6 +38,8 @@ class ThreadRequest extends FormRequest
             'title.required' => 'スレタイを入力してください',
             'title.max' => '200文字以内で入力してください',
             'cate.required' => 'カテゴリを選択してください',
+            'body.required' => '最初のレスを入力してください',
+            'body.max' => '最初のレスは400文字以内で入力してください',
         ];
     }
 }
