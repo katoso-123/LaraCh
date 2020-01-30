@@ -48,9 +48,11 @@ class ThreadController extends Controller
         
         $ress = Res::where('threads_id',$thread -> threads_id)->get(); 
 
+
         return view('thread')->with([
             'thread' => $thread,
             'ress' => $ress,
+            'ip' => \Request::ip(),
         ]);
     }
     
@@ -65,6 +67,7 @@ class ThreadController extends Controller
         return view('thread')->with([
             'thread' => $thread,
             'ress' => $ress,
+            'ip' => \Request::ip(),
         ]);
     }
 

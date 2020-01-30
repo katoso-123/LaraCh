@@ -10,7 +10,7 @@
   <!-- foreachでresDBを回す -->
   <table class="table table-hover">
   @foreach($ress as $res)
-    <tr><td>{{ 'No' }}</td><td>{{ $res->body }}</td><td>{{ $res->created_at }}</td><td>{{ '投稿者ID' }}</td></tr>
+    <tr><td>{{ 'No' }}</td><td>{{ $res->body }}</td><td>{{ $res->created_at }}</td><td>{{ $ip }}</td></tr>
   @endforeach
   </table>
   <form action="{{ action('ThreadController@res', $thread->threads_id) }}">
