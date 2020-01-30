@@ -4,8 +4,12 @@
 @section('content')
   
   <table>
-    <tr><td>{{ $thread->created_at }}</td><td><a href="{{ action('SearchController@threadCate', $thread->threads_id) }}">{{ $thread->cates_name }}</a></td></tr>
-    <tr><td><h1>{{ $thread->title }}</h1></td></tr>
+    <div class="mt-3">
+      <tr><td>{{ $thread->created_at }}</td><td><a href="{{ action('SearchController@threadCate', $thread->threads_id) }}">{{ $thread->cates_name }}</a></td></tr>
+    </div>
+    <div class="">
+      <tr><td><h1>{{ $thread->title }}</h1></td></tr>
+    </div>
   </table>
   <!-- foreachでresDBを回す -->
   <table class="table table-hover">
