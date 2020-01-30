@@ -5,29 +5,36 @@
 
   <h1>Welcome to LaraCh</h1>
   <h2>スレッド検索</h2>
-  <form action="{{ action('SearchController@word') }}">
-    <p>ワードで検索！</p>
-    <p><input type="text" placeholder="検索ワードを入力してください" name="word"><input type="submit"></p>
+  <p>ワードで検索！</p>
+  <form class="form-group" action="{{ action('SearchController@word') }}">
+    <p>
+    <div class="row">
+      <input type="text" class="form-control col-sm-6  offset-sm-2" placeholder="検索ワードを入力してください" name="word">
+      <input type="submit" class="form-control col-sm-2">
+    </div>
+    </p>
     @if ($errors->has('word'))
     <p style="color:red;">{{ $errors->first('word') }}</p>
     @endif
   </form>
-  <form action="{{ action('SearchController@category') }}" class="form-group">  
-    <p>カテゴリで検索！</p>
+  <p>カテゴリで検索！</p>
+  <form class="form-group" action="{{ action('SearchController@category') }}" class="form-group">  
     <p>
-      <select name="cate">
-        <option value="" hidden>カテゴリを選択してください</option>
-        @foreach($cates as $cate)
-          <option value="{{$cate->cates_name}}">{{ $cate->cates_name }}</option>
-        @endforeach
-      </select>
-      <input type="submit">
+      <div class="row">
+        <select class="form-control col-sm-6  offset-sm-2">
+          <option value="" hidden>カテゴリを選択してください</option>
+          @foreach($cates as $cate)
+            <option value="{{$cate->cates_name}}">{{ $cate->cates_name }}</option>
+          @endforeach
+        </select>
+        <input class="form-control col-sm-2" type="submit">
+      </div>
     </p>
     @if ($errors->has('cate'))
     <p style="color:red;">{{ $errors->first('cate') }}</p>
     @endif
   </form>
   <h2>新規スレッド作成</h2>
-  <a href="{{ url('/create') }}">新規スレッド作成</a>
+  <a class="btn btn-secondary" href="{{ url('/create') }}">新規スレッド作成</a>
 
 @endsection

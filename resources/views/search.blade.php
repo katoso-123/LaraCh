@@ -16,22 +16,15 @@
 @endif
 
   <table class="table table-bordered">
-    <tr class="table-dark"><td>タイトル</></td><td>レス数</td><td>作成日時</td><td>最終投稿日時</td></tr>
+    <tr class="thead-dark"><th>タイトル</th><th>レス数</th><th>作成日時</th><th>最終投稿日時</th></tr>
     @foreach($data as $item)
-    <tr class="table-secondary">
-      <td><a href="{{action('ThreadController@read',$item->threads_id)}}" class="text-info">{{$item->title}}</td>
+    <tr>
+      <td><a href="{{action('ThreadController@read',$item->threads_id)}}" class="text-info font-weight-bold">{{$item->title}}</td>
       <td>{{$item->res_count}}</td>
       <td>{{$item->created_at}}</td>
       <td>{{$item->res_latest}}</td>
     </tr> 
-<<<<<<< HEAD
-@endforeach
-</tbody>
-</table>
-
-=======
     @endforeach
   </table>
->>>>>>> d25626fcc3e8160e1734da4c9e3cf22c79abcf35
 {{ $data->appends('name', $name)->links() }}
 @endsection
