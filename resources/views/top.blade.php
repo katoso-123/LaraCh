@@ -12,10 +12,10 @@
     <p style="color:red;">{{ $errors->first('name') }}</p>
     @endif
   </form>
-  <form action="{{ action('SearchController@category') }}">  
+  <form action="{{ action('SearchController@category') }}" class="form-group">  
     <p>カテゴリで検索！</p>
     <p>
-      <select name="name">
+      <select name="name" class="custom-select">
         <option value="" hidden>カテゴリを選択してください</option>
         @foreach($cates as $cate)
           <option value="{{$cate->cates_name}}">{{ $cate->cates_name }}</option>
@@ -25,6 +25,6 @@
     </p>
   </form>
   <h2>新規スレッド作成</h2>
-  <a href="{{ url('/create') }}" class="btn btn-success">新規スレッド作成</a>
+  <a href="{{ url('/create') }}">新規スレッド作成</a>
 
 @endsection
