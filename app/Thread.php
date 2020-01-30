@@ -10,4 +10,9 @@ class Thread extends Model
     protected $fillable = [
         'threads_id', 'title', 'created_at', 'updated_at', 'deletesd_at', 'cates_name',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'threads_id';
+    }
 }
