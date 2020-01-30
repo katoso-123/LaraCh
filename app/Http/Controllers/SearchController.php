@@ -26,9 +26,9 @@ class SearchController extends Controller
     }
 
     //top画面⇒カテゴリ検索ボタン
-    public function category(Request $request){
-
-        $data = Thread::where('cates_name',$request->name)->paginate(10);
+    public function category(Request $request, Thread $thread){
+        dd($thread->cates_name);
+        $data = Thread::where('cates_name',$request->name)->orWhere('cates_name',$thread->cates_name)->paginate(10);
         $count = $data->count();
         // $cates = Thread::all();
         // dd(1);
@@ -41,23 +41,6 @@ class SearchController extends Controller
             'result'=>false,
             ]);
     }
-
-    public function category2(){
-
-        $data = Thread::where('cates_name',$request->name)->paginate(10);
-        $count = $data->count();
-        // $cates = Thread::all();
-        // dd(1);
-
-
-        return view('search')->with([
-            'count' => $count,
-            'name'=>$request->name,
-            'data' => $data,
-            'result'=>false,
-            ]);
-    }
-
 
     //search画面⇒ページャー
     public function pager(){
