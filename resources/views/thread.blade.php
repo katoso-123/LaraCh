@@ -29,6 +29,6 @@
     @endif
     <p><input type="submit"></p>
   </form>
-
+  <p><a href="{{url('/')}}">検索ページに戻る</a></p>
 
 @endsection

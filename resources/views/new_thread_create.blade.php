@@ -28,6 +28,6 @@
   @endif
   <p><input type="submit" class="form-control col-sm-2 offset-sm-5 mt-3" value="作成する"></p>
 </form>
-
+<p><a href="{{url('/')}}">検索ページに戻る</a></p>
 
 @endsection
