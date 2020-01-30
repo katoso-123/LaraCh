@@ -8,6 +8,9 @@
 @csrf
   <p>スレタイを入力してください</p>
   <p><input type="text" name="title"></p>
+  @if ($errors->has('title'))
+  <p style="color:red;">{{ $errors->first('title') }}</p>
+  @endif
   <p>カテゴリを選択してください</p>
   <select name="cate">
     <option value="" hidden>カテゴリを選択してください</option>
@@ -15,6 +18,9 @@
     <option value="{{ $cate -> cates_name }}">{{ $cate -> cates_name }}</option>
     @endforeach
   </select>
+  @if ($errors->has('cate'))
+  <p style="color:red;">{{ $errors->first('cate') }}</p>
+  @endif
   <p><input type="submit" value="作成する"></p>
 </form>
 

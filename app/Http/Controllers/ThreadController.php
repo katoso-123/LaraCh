@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Http\Requests\ThreadRequest;
 use App\Cate;
 use App\Thread;
 use App\Res;
@@ -17,7 +18,7 @@ class ThreadController extends Controller
     }
 
     //new_thread_create画面⇒作成ボタン
-    public function new(Request $request){
+    public function new(ThreadRequest $request){
         
         //データベースに値をinsert
         $thread = Thread::create([
@@ -53,13 +54,17 @@ class ThreadController extends Controller
     }
     
     //search画面⇒続きを読むボタン
-    public function read($thread){
-        $reses = Res::where('threads_id', $thread);
+    public function read(Thread $thread){
+        // dd($thread->threads_id);
+        $ress = Res::where('threads_id', $thread->threads_id)->get();
 
-        foreach($reses as $res){
-            dd($res); 
+        foreach($ress as $res){
+            // dd($res); 
         }
-        return view('thread');
+        return view('thread')->with([
+            'thread' => $thread,
+            'ress' => $ress,
+        ]);
     }
 
 }
