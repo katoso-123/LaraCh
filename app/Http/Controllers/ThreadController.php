@@ -37,7 +37,6 @@ class ThreadController extends Controller
 
         $ress = Res::where('threads_id',$thread -> threads_id)->get(); 
 
-        // $ress = [];
         $number = 0;
         return view('thread')->with([
             'thread' => $thread,
