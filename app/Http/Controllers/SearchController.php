@@ -43,7 +43,6 @@ class SearchController extends Controller
 
     //top画面⇒カテゴリ検索ボタン
     public function category(Request $request, Thread $thread){
-        dd($thread->cates_name);
         $data = Thread::where('cates_name',$request->name)->orWhere('cates_name',$thread->cates_name)->paginate(10);
         $count = $data->count();
         // $cates = Thread::all();
@@ -61,9 +60,15 @@ class SearchController extends Controller
             }
         }
 
+        if(($request->name) !== null){
+            $name = $request->name;
+        }else{
+            $name = $thread->cates_name;
+        }
+
         return view('search')->with([
             'count' => $count,
-            'name'=>$request->name,
+            'name'=> $name,
             'data' => $data,
             'result'=>false,
             ]);
