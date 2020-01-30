@@ -26,6 +26,7 @@ class ResRequest extends FormRequest
         return [
             //バリデーションルール
             'body' => 'required|max:400',
+            'name' => 'max:20',
         ];
     }
 
@@ -35,6 +36,7 @@ class ResRequest extends FormRequest
             //エラーメッセージ
             'body.required' => 'レスを入力してください',
             'body.max' => '400文字以内で入力してください',
+            'name.max' => '20文字以内で入力してください',
         ];
     }
 }

@@ -9,15 +9,21 @@
   </table>
   <!-- foreachでresDBを回す -->
   <table class="table table-hover">
+  <tr><td>No.</td><td>内容</td><td>投稿日時</td><td>名前</td></tr>
   @foreach($ress as $res)
-    <tr><td>{{ 'No' }}</td><td>{{ $res->body }}</td><td>{{ $res->created_at }}</td><td>{{ $ip }}</td></tr>
+    <tr><td>{{ ++$number }}</td><td>{{ $res->body }}</td><td>{{ $res->created_at }}</td><td>{{ $res->name }}</td></tr>
   @endforeach
   </table>
   <form action="{{ action('ThreadController@res', $thread->threads_id) }}">
-    <p><input type="text" placeholder="レス内容を入力してください" name="body"><input type="submit"></p>
+    <p>書込：<input type="text" placeholder="レス内容を入力してください" name="body"></p>
     @if ($errors->has('body'))
     <p style="color:red;">{{ $errors->first('body') }}</p>
     @endif
+    <p>名前：<input type="text" placeholder="" name="name" value="名無し"></p>
+    @if ($errors->has('name'))
+    <p style="color:red;">{{ $errors->first('name') }}</p>
+    @endif
+    <p><input type="submit"></p>
   </form>
 
 

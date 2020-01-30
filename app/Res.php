@@ -8,7 +8,7 @@ class Res extends Model
 {
     //
     protected $fillable = [
-        'res_id', 'threads_id', 'body', 'create_at',
+        'res_id', 'threads_id', 'body', 'name', 'create_at',
     ];
 
 }

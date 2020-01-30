@@ -39,20 +39,27 @@ class ThreadController extends Controller
     //thread画面⇒投稿ボタン
     public function res(ResRequest $request, Thread $thread){
 
+        if(isset($request->name)){
+            $name = $request->name;
+        }else{
+            $name = "名無し";
+        }
+
         //データベースに値をinsert
         $res = Res::create([
             'res_id' => uniqid(),
             'threads_id' => $thread -> threads_id,
             'body' => $request -> body,
+            'name' => $name,
         ]);
         
         $ress = Res::where('threads_id',$thread -> threads_id)->get(); 
-
+        $number = 0;
 
         return view('thread')->with([
             'thread' => $thread,
             'ress' => $ress,
-            'ip' => \Request::ip(),
+            'number' => $number,
         ]);
     }
     
@@ -60,14 +67,12 @@ class ThreadController extends Controller
     public function read(Thread $thread){
         // dd($thread->threads_id);
         $ress = Res::where('threads_id', $thread->threads_id)->get();
+        $number = 0;
 
-        foreach($ress as $res){
-            // dd($res); 
-        }
         return view('thread')->with([
             'thread' => $thread,
             'ress' => $ress,
-            'ip' => \Request::ip(),
+            'number' => $number,
         ]);
     }
 
