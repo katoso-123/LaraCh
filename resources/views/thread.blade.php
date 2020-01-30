@@ -5,7 +5,7 @@
   
   <table>
     <tr><td><h1>{{ $thread->title }}</h1></td></tr>
-    <tr><td>{{ $thread->created_at }}</td><td><a href="{{ action('SearchController@category', $thread->threads_id) }}">{{ $thread->cates_name }}</a></td></tr>
+    <tr><td>{{ $thread->created_at }}</td><td><a href="{{ action('SearchController@threadCate', $thread->threads_id) }}">{{ $thread->cates_name }}</a></td></tr>
   </table>
   <!-- foreachでresDBを回す -->
   <table>

@@ -42,11 +42,10 @@ class SearchController extends Controller
     }
 
     //top画面⇒カテゴリ検索ボタン
-    public function category(Request $request, Thread $thread){
-        $data = Thread::where('cates_name',$request->name)->orWhere('cates_name',$thread->cates_name)->paginate(10);
+    public function category(Request $request){
+        $data = Thread::where('cates_name',$request->name)->paginate(10);
         $count = $data->count();
-        // $cates = Thread::all();
-        // dd(1);
+
         foreach($data as $item){
             //レス数取得処理
             $res = Res::where('threads_id', $item->threads_id);
@@ -60,18 +59,40 @@ class SearchController extends Controller
             }
         }
 
-        if(($request->name) !== null){
-            $name = $request->name;
-        }else{
-            $name = $thread->cates_name;
+        return view('search')->with([
+            'count' => $count,
+            'name'=> $request->name,
+            'data' => $data,
+            'result'=>false,
+            ]);
+    }
+    
+
+    //Thread画面⇒カテゴリボタン
+    public function threadcate(Thread $thread){
+        $data = Thread::where('cates_name',$thread->cates_name)->paginate(10);
+        $count = $data->count();
+
+        foreach($data as $item){
+            //レス数取得処理
+            $res = Res::where('threads_id', $item->threads_id);
+            $item->res_count = $res->count();
+            //最新投稿日時
+            $res_latest = $res->latest()->first();
+            if(isset($res_latest->created_at)){
+                $item->res_latest = $res_latest->created_at;
+            }else{
+                $item->res_latest = "まだ投稿がありません";
+            }
         }
 
         return view('search')->with([
             'count' => $count,
-            'name'=> $name,
+            'name'=> $thread->cates_name,
             'data' => $data,
             'result'=>false,
             ]);
     }
     
 }
+
