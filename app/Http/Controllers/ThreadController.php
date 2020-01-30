@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\ThreadRequest;
+use App\Http\Requests\ResRequest;
 use App\Cate;
 use App\Thread;
 use App\Res;
@@ -36,7 +37,7 @@ class ThreadController extends Controller
     }
 
     //thread画面⇒投稿ボタン
-    public function res(Request $request, Thread $thread){
+    public function res(ResRequest $request, Thread $thread){
 
         //データベースに値をinsert
         $res = Res::create([
