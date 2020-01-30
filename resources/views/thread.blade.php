@@ -1,21 +1,21 @@
 @extends('layout')
 
-@section('title', 'スレ')
+@section('title', $thread->title )
 @section('content')
   
   <table>
-    <div class="mt-3">
+    <div class="mt-4">
       <tr><td>{{ $thread->created_at }}</td><td><a href="{{ action('SearchController@threadCate', $thread->threads_id) }}">{{ $thread->cates_name }}</a></td></tr>
     </div>
-    <div class="">
+    <div >
       <tr><td><h1>{{ $thread->title }}</h1></td></tr>
     </div>
   </table>
-  <!-- foreachでresDBを回す -->
   <table class="table table-hover">
-  <tr><td>No.</td><td>内容</td><td>投稿日時</td><td>名前</td></tr>
+  <tr class="thead-dark"><th style="width:20%;">No.</th><th style="width:40%;">名前</th><th style="width:40%;">投稿時間</th></tr>
   @foreach($ress as $res)
-    <tr><td>{{ ++$number }}</td><td>{{ $res->body }}</td><td>{{ $res->created_at }}</td><td>{{ $res->name }}</td></tr>
+    <tr class="table-active"><td>{{ ++$number }}</td><td>{{ $res->name }}</td><td>{{ $res->created_at }}</td></tr>
+    <tr><td class="text-left p-4" colspan="3">{{ $res->body }}</td></tr>
   @endforeach
   </table>
   <form action="{{ action('ThreadController@res', $thread->threads_id) }}">
