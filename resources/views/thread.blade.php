@@ -19,7 +19,7 @@
   @endforeach
   </table>
   <form action="{{ action('ThreadController@res', $thread->threads_id) }}">
-    <p>書込：<input type="text" placeholder="レス内容を入力してください" name="body"></p>
+    <p>書込：<input type="text" placeholder="レス内容を入力してください" name="body" value="{{ old('body') }}"></p>
     @if ($errors->has('body'))
     <p style="color:red;">{{ $errors->first('body') }}</p>
     @endif
