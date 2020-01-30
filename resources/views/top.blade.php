@@ -3,9 +3,11 @@
 @section('title', 'Larach')
 @section('content')
 
-  <h1>Welcome to LaraCh</h1>
-  <h2>スレッド検索</h2>
-  <p>ワードで検索！</p>
+  <h1 class="my-5">Welcome to LaraCh</h1>
+  <h2 class="my-4">スレッド検索</h2>
+  <div class="my-2">
+    <p>ワードで検索！</p>
+  </div>
   <form class="form-group" action="{{ action('SearchController@word') }}">
     <p>
     <div class="row">
@@ -17,7 +19,7 @@
     <p style="color:red;">{{ $errors->first('word') }}</p>
     @endif
   </form>
-  <p>カテゴリで検索！</p>
+  <p >カテゴリで検索！</p>
   <form class="form-group" action="{{ action('SearchController@category') }}" class="form-group">  
     <p>
       <div class="row">
@@ -34,7 +36,9 @@
     <p style="color:red;">{{ $errors->first('cate') }}</p>
     @endif
   </form>
-  <h2>新規スレッド作成</h2>
+  <div class="mt-5 mb-4">
+    <h2>新規スレッド作成</h2>
+  </div>
   <a class="btn btn-secondary" href="{{ url('/create') }}">新規スレッド作成</a>
 
 @endsection
