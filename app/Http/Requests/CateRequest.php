@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Cate;
 
-class WordRequest extends FormRequest
+class CateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +25,7 @@ class WordRequest extends FormRequest
     {
         return [
             //バリデーションルール
-            'word' => 'required|max:32',
+            'cate' => 'required',
         ];
     }
 
@@ -34,8 +33,7 @@ class WordRequest extends FormRequest
     {
         return [
             //エラーメッセージ
-            'word.required' => '検索ワードを入力してください',
-            'word.max' => '32文字以内で入力してください',
+            'cate.required' => 'カテゴリを選択してください',
         ];
     }
 }
