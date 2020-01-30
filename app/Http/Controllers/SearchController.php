@@ -42,6 +42,23 @@ class SearchController extends Controller
             ]);
     }
 
+    public function category2(){
+
+        $data = Thread::where('cates_name',$request->name)->paginate(10);
+        $count = $data->count();
+        // $cates = Thread::all();
+        // dd(1);
+
+
+        return view('search')->with([
+            'count' => $count,
+            'name'=>$request->name,
+            'data' => $data,
+            'result'=>false,
+            ]);
+    }
+
+
     //search画面⇒ページャー
     public function pager(){
         return view('search');
