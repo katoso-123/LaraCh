@@ -8,9 +8,9 @@
     <p>ワードで検索！</p>
   <form class="form-group" action="{{ action('SearchController@word') }}">
     <p>
-    <div class="row">
-      <input type="text" class="form-control col-sm-6  offset-sm-2" placeholder="検索ワードを入力してください" name="word">
-      <input type="submit" class="form-control col-sm-2 ml-3" style="max-width:150px;">
+    <div class="row mx-3">
+      <input type="text"  class="form-control col-lg-4 offset-lg-3 col-sm-6 offset-sm-2" placeholder="検索ワードを入力してください" name="word">
+      <input type="submit" class="form-control col-lg-2 col-sm-2 ml-sm-3 ml-lg-3">
     </div>
     </p>
     @if ($errors->has('word'))

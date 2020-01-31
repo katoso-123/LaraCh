@@ -17,6 +17,7 @@ class CreateThreadsTable extends Migration
             $table->bigIncrements('id');
             $table->string('threads_id');
             $table->string('title');
+            $table->integer('res_count');
             $table->timestamps();
             $table->softDeletes();
             $table->string('cates_name');

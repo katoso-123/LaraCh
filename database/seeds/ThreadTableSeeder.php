@@ -18,6 +18,7 @@ class ThreadTableSeeder extends Seeder
             [
                 'threads_id' => 1,
                 'title'      => 'コロナウイルス最後まで感染者が出ない県どこか予想しようぜ',
+                'res_count'  => 14,
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
                 'deleted_at' => new DateTime(),

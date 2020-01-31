@@ -25,6 +25,7 @@ class ThreadController extends Controller
         $thread = Thread::create([
             'threads_id' => uniqid(),
             'title' => $request -> title,
+            'res_count' => 1,
             'cates_name' => $request -> cate,
         ]);
 
@@ -53,6 +54,9 @@ class ThreadController extends Controller
         }else{
             $name = "名無し";
         }
+            
+        //update
+        $thread->update(['res_count' => $thread->res_count + 1]);
 
         //データベースに値をinsert
         $res = Res::create([
