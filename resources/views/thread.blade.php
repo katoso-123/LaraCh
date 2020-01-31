@@ -5,7 +5,7 @@
   
   <table>
     <div class="mt-4">
-      <tr><td>{{ $thread->created_at }}</td><td><a href="{{ action('SearchController@threadCate', $thread->threads_id) }}">{{ $thread->cates_name }}</a></td></tr>
+      <tr class="text-left"><td>{{ $thread->created_at }}<a href="{{ action('SearchController@threadCate', $thread->threads_id) }}">{{ $thread->cates_name }}</a></td></tr>
     </div>
     <div >
       <tr><td><h1>{{ $thread->title }}</h1></td></tr>
@@ -20,16 +20,16 @@
     <tr class="table-active"><td class="text-left p-5" colspan="3">{{ $res->body }}</td></tr>
   @endforeach
   </table>
-  <form action="{{ action('ThreadController@res', $thread->threads_id) }}">
-    <p>書込：<input type="text" placeholder="レス内容を入力してください" name="body" value="{{ old('body') }}"></p>
+  <form class="form-group" action="{{ action('ThreadController@res', $thread->threads_id) }}">
+    <p>書込<input class="form-control col-4 offset-4" type="text" placeholder="レス内容を入力してください" name="body" value="{{ old('body') }}" size="30"></p>
     @if ($errors->has('body'))
     <p style="color:red;">{{ $errors->first('body') }}</p>
     @endif
-    <p>名前：<input type="text" placeholder="" name="name" value="名無し"></p>
+    <p>名前<input class="form-control col-4 offset-4" type="text" placeholder="" name="name" value="名無し" size="30"></p>
     @if ($errors->has('name'))
     <p style="color:red;">{{ $errors->first('name') }}</p>
     @endif
-    <p><input type="submit"></p>
+    <p><input class="form-control col-2 offset-5" type="submit" value="投稿"></p>
   </form>
   <p><a href="{{url('/')}}">検索ページに戻る</a></p>
 

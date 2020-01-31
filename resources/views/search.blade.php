@@ -14,7 +14,7 @@
 @else
 <p>検索ヒット数：{{$count}}件</p>
 <form action="{{ action('SearchController@sort',[$name,$result]) }}">
-  <select name="sort"  onChange="this.form.submit()">
+  <select class="form-control col-4 offset-4 my-3" name="sort"  onChange="this.form.submit()">
     <option value="" hidden>ならびかえ</option>
     <option value="new">新着順</option>
     <option value="popular">人気順</option>

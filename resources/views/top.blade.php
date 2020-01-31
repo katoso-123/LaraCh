@@ -10,7 +10,7 @@
     <p>
     <div class="row mx-3">
       <input type="text"  class="form-control col-lg-4 offset-lg-3 col-sm-6 offset-sm-2" placeholder="検索ワードを入力してください" name="word">
-      <input type="submit" class="form-control col-lg-2 col-sm-2 ml-sm-3 ml-lg-3">
+      <input type="submit" class="form-control col-lg-2 col-sm-2 ml-sm-3 ml-lg-3" value="検索">
     </div>
     </p>
     @if ($errors->has('word'))
@@ -33,12 +33,13 @@
   <div class="mt-5 mb-3">
     <h2>新規スレッド作成</h2>
   </div>
-  <a class="btn btn-secondary" href="{{ url('/create') }}">新規スレッド作成</a>
+  <a class="btn btn-secondary mb-3 p-2 px-5" href="{{ url('/create') }}">新規スレッド作成</a>
 
   <table class="table table-bordered">
-    <tr class="thead-dark"><th>人気スレ</th></tr>
+    <tr class="thead-dark"><th colspan="3">人気スレ</th></tr>
+    <tr class="thead-dark"><th>スレタイ</th><th>レス数</th><th>最終投稿時間</th></tr>
     @foreach($threads as $item)
-    <tr><td>{{ $item->title }}</td></tr> 
+    <tr><td><a href="{{action('ThreadController@read',$item->threads_id)}}">{{ $item->title }}</a></td><td>({{ $item->res_count }})</td><td>{{ $item->updated_at }}</td></tr> 
     @endforeach
   </table>
   
