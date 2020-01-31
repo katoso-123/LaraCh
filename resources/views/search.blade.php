@@ -15,6 +15,7 @@
 <p>検索ヒット数：{{$count}}件</p>
 <form action="{{ action('SearchController@sort',[$name,$result]) }}">
   <select name="sort"  onChange="this.form.submit()">
+    <option value="" hidden>ならびかえ</option>
     <option value="new">新着順</option>
     <option value="popular">人気順</option>
   </select>
@@ -31,6 +32,6 @@
     </tr> 
     @endforeach
   </table>
-{{ $data->appends('name', $name)->links() }}
+
 <p><a href="{{url('/')}}">検索ページに戻る</a></p>
 @endsection
