@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\WordRequest;
-use App\Http\Requests\CateRequest;
 use App\Thread;
 use App\Cate;
 use App\Res;
@@ -37,10 +36,10 @@ class SearchController extends Controller
     }
 
     //top画面⇒カテゴリ検索ボタン
-    public function category(CateRequest $request){
+    public function category($category){
 
         $query = Thread::query();
-        $query->where('cates_name',$request->cate);
+        $query->where('cates_name',$category);
         $data = $query->orderBy('created_at','desc')->paginate(10);
         //検索ヒット数
         $count = $query->count();
@@ -53,7 +52,7 @@ class SearchController extends Controller
 
         return view('search')->with([
             'count' => $count,
-            'name'=> $request->cate,
+            'name'=> $category,
             'data' => $data,
             'result'=> 0,
             ]);
