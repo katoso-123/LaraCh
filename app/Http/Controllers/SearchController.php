@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
 use App\Http\Requests\WordRequest;
 use App\Http\Requests\CateRequest;
@@ -105,23 +106,16 @@ class SearchController extends Controller
     public function sort(Request $request,$name,$result){
 
         $sort_type = $request->sort;
-        
-        // dd($result);
-
         //スレ表示処理
         $query = Thread::query();
         $count = $query->count();
 
-        if($result){//word検索
-            $data = $query->where('title','like','%'.$name.'%')->get();
-        }else{//カテゴリ検索
-            $data = $query->where('cates_name',$request->cate)->get();
-        }
+        $data = $query->where('title','like','%'.$name.'%');
 
         foreach($data as $item){
             //レス数取得処理
             $res = Res::where('threads_id', $item->threads_id);
-            $item->res_count = $res->count();
+            $item -> res_count = $res->count();
             //最新投稿日時
             $res_latest = $res->latest()->first();
             if(isset($res_latest->created_at)){
@@ -132,11 +126,19 @@ class SearchController extends Controller
         }
 
         if($sort_type==='new'){
-            $data = $data->orderBy('created_at','desc')->paginate(10);
+            $collection = collect($data);
+            $data = $collection->sortBy('created_at');
+            // $data = $data->orderBy('created_at','desc')->paginate(10);
         }else if($sort_type==='popular'){
             $collection = collect($data);
-            $data = $collection->sortBy('res_count');
+            $data = $collection->sortByDesc('res_count');
         }
+
+        foreach($data as $item){
+            var_dump($item->id);
+        }
+        
+        dd($data);
 
         return view('search')->with([
             'count' => $count,

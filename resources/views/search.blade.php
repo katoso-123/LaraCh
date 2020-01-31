@@ -31,6 +31,5 @@
     </tr> 
     @endforeach
   </table>
-{{ $data->appends('name', $name)->links() }}
 <p><a href="{{url('/')}}">検索ページに戻る</a></p>
 @endsection
