@@ -33,4 +33,13 @@
   </div>
   <a class="btn btn-secondary" href="{{ url('/create') }}">新規スレッド作成</a>
 
+  <table class="table table-bordered">
+    <tr class="thead-dark"><th>人気スレ</th></tr>
+    @foreach($threads as $item)
+    <tr><td>{{ $item->title }}</td></tr> 
+    @endforeach
+  </table>
+  
+  
+
 @endsection

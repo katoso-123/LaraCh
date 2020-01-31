@@ -49,7 +49,7 @@ class SearchController extends Controller
             //最新投稿日時
             $res = Res::where('threads_id', $item->threads_id);
             $item->res_latest = $res->latest()->first()->created_at;
-        }
+            }
 
         return view('search')->with([
             'count' => $count,
