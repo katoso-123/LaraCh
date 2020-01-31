@@ -13,6 +13,12 @@
 <p>検索結果がありません</p>
 @else
 <p>検索ヒット数：{{$count}}件</p>
+<form action="{{ action('SearchController@sort',[$name,$result]) }}">
+  <select name="sort"  onChange="this.form.submit()">
+    <option value="new">新着順</option>
+    <option value="popular">人気順</option>
+  </select>
+</form>
   <table class="table table-bordered">
     <tr class="thead-dark"><th>タイトル</th><th>レス数</th><th>作成日時</th><th>最終投稿日時</th></tr>
     @endif
