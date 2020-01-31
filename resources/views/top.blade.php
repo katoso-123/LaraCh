@@ -18,13 +18,15 @@
     @endif
   </form>
   <p >カテゴリで検索！</p>
-    <p>
+    <div class="container">
       <div class="row">
       @foreach($cates as $cate)
-        <a href="{{action('SearchController@category',$cate->cates_name)}}">{{ $cate->cates_name }}({{ $cate->thread_count}})</a>
+        <div class="col-4">
+        <a class="btn m-1 btn-warning" style="width:99%;" href="{{action('SearchController@category',$cate->cates_name)}}">{{ $cate->cates_name }}({{ $cate->thread_count}})</a>
+        </div>
       @endforeach
       </div>
-    </p>
+    </div>
     @if ($errors->has('cate'))
     <p style="color:red;">{{ $errors->first('cate') }}</p>
     @endif
