@@ -27,6 +27,7 @@ class WordRequest extends FormRequest
         return [
             //バリデーションルール
             'word' => 'required|max:32',
+            // 'sort' => 'required',
         ];
     }
 
@@ -36,6 +37,7 @@ class WordRequest extends FormRequest
             //エラーメッセージ
             'word.required' => '検索ワードを入力してください',
             'word.max' => '32文字以内で入力してください',
+            // 'sort.required' => '入力してください',
         ];
     }
 }

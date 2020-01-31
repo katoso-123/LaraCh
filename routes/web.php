@@ -24,3 +24,4 @@ Route::get('/read/{thread}','ThreadController@read' );
 Route::get('/search/word','SearchController@word' );
 Route::get('/search/category','SearchController@category' );
 Route::get('/search/category/{thread}','SearchController@threadCate' );
+Route::get('/search/sort/{name}/{result}','SearchController@sort' );

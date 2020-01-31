@@ -17,8 +17,9 @@ class SearchController extends Controller
         //スレ表示処理
         $query = Thread::query();
         $query->where('title','like','%'.$request->word.'%');
-        $count = $query->count();
         $data = $query->orderBy('created_at','desc')->paginate(10);
+        //検索ヒット数
+        $count = $query->count();
         
         foreach($data as $item){
             //レス数取得処理
@@ -44,8 +45,12 @@ class SearchController extends Controller
 
     //top画面⇒カテゴリ検索ボタン
     public function category(CateRequest $request){
-        $data = Thread::where('cates_name',$request->cate)->paginate(10);
-        $count = $data->count();
+
+        $query = Thread::query();
+        $query->where('cates_name',$request->cate);
+        $data = $query->orderBy('created_at','desc')->paginate(10);
+        //検索ヒット数
+        $count = $query->count();
 
         foreach($data as $item){
             //レス数取得処理
@@ -71,7 +76,8 @@ class SearchController extends Controller
 
     //Thread画面⇒カテゴリボタン
     public function threadcate(Thread $thread){
-        $data = Thread::where('cates_name',$thread->cates_name)->paginate(10);
+        $query = Thread::query();
+        $data = Thread::where('cates_name',$thread->cates_name)->orderBy('created_at','desc')->paginate(10);
         $count = $data->count();
 
         foreach($data as $item){
@@ -92,6 +98,51 @@ class SearchController extends Controller
             'name'=> $thread->cates_name,
             'data' => $data,
             'result'=>false,
+            ]);
+    }
+
+    //Search画面⇒ソート選択
+    public function sort(Request $request,$name,$result){
+
+        $sort_type = $request->sort;
+        
+        // dd($result);
+
+        //スレ表示処理
+        $query = Thread::query();
+        $count = $query->count();
+
+        if($result){//word検索
+            $data = $query->where('title','like','%'.$name.'%')->get();
+        }else{//カテゴリ検索
+            $data = $query->where('cates_name',$request->cate)->get();
+        }
+
+        foreach($data as $item){
+            //レス数取得処理
+            $res = Res::where('threads_id', $item->threads_id);
+            $item->res_count = $res->count();
+            //最新投稿日時
+            $res_latest = $res->latest()->first();
+            if(isset($res_latest->created_at)){
+                $item->res_latest = $res_latest->created_at;
+            }else{
+                $item->res_latest = "まだ投稿がありません";
+            }
+        }
+
+        if($sort_type==='new'){
+            $data = $data->orderBy('created_at','desc')->paginate(10);
+        }else if($sort_type==='popular'){
+            $collection = collect($data);
+            $data = $collection->sortBy('res_count');
+        }
+
+        return view('search')->with([
+            'count' => $count,
+            'name'=> $name,
+            'data' => $data,
+            'result'=>$result,
             ]);
     }
     
