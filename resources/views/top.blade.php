@@ -24,7 +24,7 @@
         <select class="form-control custom-select col-sm-6  offset-sm-2" name="cate">
           <option value="" hidden>カテゴリを選択してください</option>
           @foreach($cates as $cate)
-            <option value="{{$cate->cates_name}}">{{ $cate->cates_name }}</option>
+            <option value="{{$cate->cates_name}}">{{ $cate->cates_name }}({{ $cate->thread_count}})</option>
           @endforeach
         </select>
         <input class="form-control col-sm-2  ml-3" style="max-width:150px;" type="submit">

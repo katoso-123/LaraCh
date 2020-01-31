@@ -14,8 +14,10 @@
   <table class="table table-hover">
   <tr class="thead-dark"><th style="width:20%;">No.</th><th style="width:40%;">名前</th><th style="width:40%;">投稿時間</th></tr>
   @foreach($ress as $res)
-    <tr class="table-active table-sm"><td>{{ ++$number }}</td><td>{{ $res->name }}</td><td>{{ $res->created_at }}</td></tr>
-    <tr><td class="text-left p-4" colspan="3">{{ $res->body }}</td></tr>
+    <div style="">
+    <tr class="table-sm" ><td>{{ ++$number }}</td><td>{{ $res->name }}</td><td>{{ $res->created_at }}</td></tr>
+    </div>
+    <tr class="table-active"><td class="text-left p-5" colspan="3">{{ $res->body }}</td></tr>
   @endforeach
   </table>
   <form action="{{ action('ThreadController@res', $thread->threads_id) }}">
