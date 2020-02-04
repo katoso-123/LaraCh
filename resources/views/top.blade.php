@@ -17,7 +17,7 @@
     <p style="color:red;">{{ $errors->first('word') }}</p>
     @endif
   </form>
-  <p >カテゴリで検索！</p>
+  <p >カテゴリで検索！う</p>
     <div class="container">
       <div class="row">
       @foreach($cates as $cate)
